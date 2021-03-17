@@ -17,7 +17,7 @@ Counter = 0
 AvgPandL = 0
 MaxDate = " "
 MinDate = " "
-
+SavedTotal = 0.0
 #Function for printing
 def print_budget_data(datalisted):
    Cnt = int(datalisted["Count"])
@@ -68,6 +68,7 @@ with open(PyBank_csv,'r') as csvfile:
             if FirstTotal == 0:
                 FirstTotal = float(row[1])
             
+           
             # check for date, add total, check P&L to see if < or > the current amount
             TDateHolder = row[0]
             # print(DateHolder)
@@ -98,6 +99,7 @@ with open(PyBank_csv,'r') as csvfile:
 
              }
 
+            
 print_budget_data(PyBankData)    
 
         
