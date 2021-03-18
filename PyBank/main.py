@@ -2,7 +2,6 @@ import os
 import csv
 import numpy 
 
-
 #Path to collect the data 
 PyBank_csv = os.path.join('Resources','budget_data.csv')
 
@@ -18,17 +17,19 @@ AvgPandL = 0
 MaxDate = " "
 MinDate = " "
 SavedTotal = 0.0
-#Function for printing
+#Function for printing - it accepts the data read from the input file
 def print_budget_data(datalisted):
-   Cnt = int(datalisted["Count"])
+  
    newlist=[]
    newlist.append(datalisted["Differences"])
    for nix in newlist:
         AvgPandL= 0.0
    
    Opens = float(datalisted["First Total"])
-   print(Opens)
+    #print(Opens)
+    #compute the average change here
    AvgPandL = (sum(nix)/Opens)
+    #print results to command line
 
    print('Financial Analysis')
    print('-------------------------------------------------------------')
@@ -38,6 +39,7 @@ def print_budget_data(datalisted):
    print(f'Greatest Increase in Profits: {datalisted["Max Date"]}  ${datalisted["MaxAmount"]}')
    print(f'Greatest Decrease in Profits: {datalisted["Min Date"]}  ${datalisted["MinAmount"]}')
    
+   #open a csv file for writing results
    output_path = os.path.join("Resources","Financial_Analysis.csv")
    with open(output_path, 'w',newline='') as csvfile:
        csvwriter = csv.writer(csvfile, delimiter=',')
@@ -50,7 +52,7 @@ def print_budget_data(datalisted):
        csvwriter.writerow(["Greatest Decrease","${:,.2f}".format(datalisted["MinAmount"]),datalisted["Min Date"]])
        
 
-    #function ends here - add more
+    #function ends here 
 
 #read in the csv file
 with open(PyBank_csv,'r') as csvfile:
@@ -67,7 +69,7 @@ with open(PyBank_csv,'r') as csvfile:
             
             if FirstTotal == 0:
                 FirstTotal = float(row[1])
-            
+           
            
             # check for date, add total, check P&L to see if < or > the current amount
             TDateHolder = row[0]
@@ -99,7 +101,7 @@ with open(PyBank_csv,'r') as csvfile:
 
              }
 
-            
+#call the funtion to format and print out the data            
 print_budget_data(PyBankData)    
 
         

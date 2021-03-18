@@ -61,23 +61,29 @@ for i in range(len(unique_list)):
         "VoteCount":Votes[i]
         }
     )
-    
+    #extract the winning candidate
+    Winner = 0
+    for i in range(len(Votes)):
+        if Winner <= Votes[i]:
+            Winner = Votes[i]
+            WinningCandidate=Results[i]["Candidate"] 
+            x=i     
+print(f'Winner is: {Results[x]["Candidate"]}')
 print(f'----------------------')
-
-
 
 output_path = os.path.join("Resources","Vote_Data.csv")
 with open(output_path, 'w',newline='') as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=',')
     csvwriter.writerow(["Election Results"])
     csvwriter.writerow(["Total Votes", (TotalVotes)])
-    csvwriter.writerow(["Candidate","Percentage Votes","Votes Cast"])
 
-#for x in Results:
-  #  print(x)
+    fieldnames = ["Candidate","WinningPercent","VoteCount"]
+    writer=csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(Results)     
+    csvwriter.writerow(["Winner is: ",(WinningCandidate)])
 
-#dict.get 
-#dict.values
+
 
 
 
