@@ -1,4 +1,4 @@
-""" PyBoss.py """
+#PyBoss.py
 #-*- coding: UTF-8 -*-
 import os
 import json
@@ -7,8 +7,9 @@ import string
 import re
 import us_state_abbrev
 
-#Need the state key - need to preprocess the state.py
-
+#the state key - needed to preprocess the state.py
+#employee data file will replace the numbers for * in employee_data.csv
+#The states will be replaced with abbreviations
 filepath = os.path.join("employee_data.csv")
 abbreviations = {}
 employee_data = []
