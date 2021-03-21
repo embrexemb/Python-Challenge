@@ -1,3 +1,4 @@
+#PyBank.py
 import os
 import csv
 import numpy 
@@ -26,9 +27,9 @@ def print_budget_data(datalisted):
         AvgPandL= 0.0
    
    Opens = float(datalisted["First Total"])
-   #Compute average Change
+    #print(Opens)
+    #compute the average change here
    AvgPandL = (sum(nix)/Opens)
-
     #print results to command line
 
    print('Financial Analysis')
@@ -73,9 +74,9 @@ with open(PyBank_csv,'r') as csvfile:
            
             # check for date, add total, check P&L to see if < or > the current amount
             TDateHolder = row[0]
-            
+            # print(DateHolder)
             TPandL = float(row[1])
-            
+            #print(PandL)
             TotalPandL = TotalPandL + TPandL
             DifYear = TotalPandL - FirstTotal
             DifList.append(DifYear)
@@ -84,7 +85,7 @@ with open(PyBank_csv,'r') as csvfile:
             if MaxPandL <= TPandL:
                 MaxPandL = TPandL
                 MaxDate = TDateHolder
-                
+                #print(MaxDate)
             if MinPandL >= TPandL:
                 MinPandL = TPandL
                 MinDate = TDateHolder

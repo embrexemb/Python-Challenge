@@ -1,4 +1,3 @@
-#PyPoll - computes the total votes for each candidate 
 import os
 import csv
 import numpy
@@ -9,7 +8,6 @@ TotalVotes = 0
 print(f'----------------------')
 print(f'Election Results')
 print(f'----------------------')
-#Read the election data file
 PyPoll_csv=os.path.join('Resources','election_data.csv')
 with open(PyPoll_csv,'r')as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -28,11 +26,18 @@ print(f'----------------------')
 csvfile.close()
 
 PyPoll_csv=os.path.join('Resources','election_data.csv')
+#debug line
+#for x in unique_list:
+         # print(x)
 
 UListlength = len(unique_list)
+#debug line
+#print(UListlength)
 
 Votes = [0] * UListlength
 VotelistLength = len(Votes)
+#print (VotelistLength)
+
 
 with open(PyPoll_csv,'r')as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -44,6 +49,7 @@ with open(PyPoll_csv,'r')as csvfile:
               Votes[i] +=1
 
   
+
 for i in range(len(unique_list)):
     Percentage = ((Votes[i]/TotalVotes)*100)
     print(f'{unique_list[i]}: {round(Percentage,2)}%  ({Votes[i]})')
@@ -66,7 +72,6 @@ print(f'Winner is: {Results[x]["Candidate"]}')
 print(f'----------------------')
 
 output_path = os.path.join("Resources","Vote_Data.csv")
-#write the results to a file
 with open(output_path, 'w',newline='') as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=',')
     csvwriter.writerow(["Election Results"])

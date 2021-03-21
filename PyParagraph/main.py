@@ -1,7 +1,9 @@
+#PyParagraph
 import os
 import string
 import re
 
+#type in a file name at the input prompt
 fileinput=input("Type in a filename to process: ")
 #paragraph_path = os.path.join("raw_data","paragraph_1.txt")
 paragraph_path = os.path.join("raw_data",fileinput)
@@ -16,10 +18,9 @@ def Load_list(filepath):
 
 #get words as a string
 textLoaded = load_file(paragraph_path)
-#print(textLoaded)
+
 SCounted = len(re.findall(r'\.!?',textLoaded))
-#Count the sentences in the text block
-#print(SCounted)
+#Count the sentences in the text blockpp
 
 print(f'--------------------')
 print(f'Paragraph Analysis')
